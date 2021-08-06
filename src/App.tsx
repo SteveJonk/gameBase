@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import { FC } from 'react';
+
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+import { Container, Typography } from '@material-ui/core';
+
+import { GameBaseQuery } from './Components/Container/GameBaseQuery';
+import AppTheme from './Components/Container/AppTheme';
+
+const queryClient = new QueryClient();
+
+const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppTheme>
+      <Container maxWidth='md'>
+        <Typography variant='h1'>Jaimy en Steve's Gamebase</Typography>
+        <QueryClientProvider client={queryClient}>
+          <GameBaseQuery />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </Container>
+    </AppTheme>
   );
-}
+};
 
 export default App;
