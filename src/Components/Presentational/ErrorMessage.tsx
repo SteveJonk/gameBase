@@ -7,7 +7,7 @@ const ErrorMessage = () => {
         style={{ margin: '0 auto', display: 'block' }}
         src={error}
         alt='Error animation'
-        width='400'
+        width='300px'
       />
     </div>
   );

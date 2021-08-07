@@ -13,8 +13,10 @@ export const GameBaseQuery: FC = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [steamID, setSteamID] = useState<string | null>(null);
 
-  const { isLoading, error, data, status } = useQuery('gameBaseData', () =>
-    fetch('https://usesql.com/query/gUC7x2/GoogleSheet').then((res) => res.json())
+  const { isLoading, error, data, status } = useQuery('GameBaseData', () =>
+    fetch('https://usesql.com/query/gUC7x2/GoogleSheet?refresh=true').then((res) =>
+      res.json()
+    )
   );
 
   useEffect(() => {

@@ -1,11 +1,9 @@
+import React from 'react';
 import {
   AppBar,
-  Button,
   createStyles,
   Dialog,
-  DialogActions,
   DialogContent,
-  DialogTitle,
   IconButton,
   makeStyles,
   Slide,
@@ -14,9 +12,10 @@ import {
   Typography,
 } from '@material-ui/core';
 import { TransitionProps } from '@material-ui/core/transitions/transition';
-
 import { Close } from '@material-ui/icons';
-import React from 'react';
+
+import SingleGameQuery from '../Container/SingleGameQuery';
+import ErrorMessage from './ErrorMessage';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -67,20 +66,23 @@ const GameDialog: React.FC<iErrorMessageProps> = (props) => {
               <Close />
             </IconButton>
             <Typography variant='h6' className={classes.title}>
-              {steamID ? steamID : 'No ID filled in'}
+              {steamID ? steamID : 'Geen ID ingevuld'}
             </Typography>
           </Toolbar>
         </AppBar>
 
         <DialogContent dividers>
-          {
-            //TODO Hier moet een component komen om de api aanroep te doen
-          }
-          <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus
-            ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
-            ac, vestibulum at eros.
-          </Typography>
+          <br />
+          {steamID ? (
+            <SingleGameQuery steamID={steamID} />
+          ) : (
+            <React.Fragment>
+              <ErrorMessage />
+              <Typography variant='h5' align='center'>
+                Er is geen steam id ingevuld voor deze game
+              </Typography>
+            </React.Fragment>
+          )}
         </DialogContent>
       </Dialog>
     </div>

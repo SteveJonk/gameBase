@@ -1,6 +1,7 @@
 {
   "name": "gamebase",
   "version": "0.1.0",
+  "proxy": "https://store.steampowered.com",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -12,6 +13,8 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "html-react-parser": "^1.2.7",
+    "http-proxy-middleware": "^0.19.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.19.2",
