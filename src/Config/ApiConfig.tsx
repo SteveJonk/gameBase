@@ -1,7 +1,7 @@
 export const Endpoint = {
   url:
     process.env.NODE_ENV === 'production'
-      ? 'https://store.steampowered.com/api/appdetails?appids='
+      ? 'gameapi/api/appdetails?appids='
       : '/api/appdetails?appids=',
 };
 

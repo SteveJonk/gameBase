@@ -14,6 +14,10 @@ const apiProxy = proxy('https://store.steampowered.com/api/appdetails', {
 
 app.use('/api/appdetails', apiProxy);
 
+app.use('/gameapi', proxy('https://store.steampowered.com/'));
+
+app.use('/test', proxy('https://google.nl'));
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 });
