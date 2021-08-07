@@ -1,6 +1,10 @@
 {
   "name": "gamebase",
   "version": "0.1.0",
+  "engines": {
+    "node": "14.x",
+    "npm": "7.x"
+  },
   "proxy": "https://store.steampowered.com",
   "private": true,
   "dependencies": {
