@@ -18,7 +18,7 @@ const SingleGameQuery: React.FC<iSingleGameQuery> = (props) => {
   const [singleGameSteam, setSingleGameSteam] = useState<iSingleGameSteam | null>(null);
 
   const { isLoading, error, data, status } = useQuery('SingleGameSteam', () =>
-    fetch(Endpoint.url + steamID).then((res) => res.json())
+    fetch(Endpoint.url + steamID, { mode: 'no-cors' }).then((res) => res.json())
   );
 
   useEffect(() => {
