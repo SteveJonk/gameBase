@@ -1,12 +1,23 @@
 import { iSingleGameSteam } from './../../Interfaces/iSingleGameSteam';
 import parse from 'html-react-parser';
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, makeStyles, Typography } from '@material-ui/core';
+
+const useStyles = makeStyles({
+  image: {
+    width: '100%',
+    height: 200,
+    objectFit: 'contain',
+    objectPosition: 'top left',
+  },
+});
 
 const SingleGame: React.FC<iSingleGameSteam> = (props) => {
+  const styles = useStyles();
+
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
-        <img src={props.header_image} alt='header' width='500px' />
+        <img src={props.header_image} alt='header' className={styles.image} />
         <Typography variant='h1' align='left'>
           {props.name}
         </Typography>

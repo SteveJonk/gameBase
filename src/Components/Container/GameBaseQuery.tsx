@@ -7,9 +7,23 @@ import LoadingAnimation from './../Presentational/LoadingAnimation';
 import ErrorMessage from '../Presentational/ErrorMessage';
 import GameCard from '../Presentational/GameCard';
 import GameDialog from '../Presentational/GameDialog';
+import { Button, makeStyles } from '@material-ui/core';
+
+var array = require('lodash/array');
+
+const useStyles = makeStyles({
+  button: {
+    marginBottom: 30,
+    margin: '0 auto',
+    display: 'block',
+  },
+});
 
 export const GameBaseQuery: FC = () => {
+  const styles = useStyles();
+
   const [gameList, setGameList] = useState<iGame[]>([]);
+  const [gameListLimit, setGameListLimit] = useState<number>(10);
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [steamID, setSteamID] = useState<string | null>(null);
 
@@ -42,7 +56,7 @@ export const GameBaseQuery: FC = () => {
         }}
         steamID={steamID!}
       />
-      {gameList.map((game, index) => (
+      {array.take(gameList, gameListLimit).map((game: iGame, index: number) => (
         <GameCard
           key={`${game.Naam} - ${index}`}
           game={game}
@@ -51,6 +65,16 @@ export const GameBaseQuery: FC = () => {
           }
         />
       ))}
+      <Button
+        variant='contained'
+        color='primary'
+        className={styles.button}
+        onClick={() => {
+          setGameListLimit(gameListLimit + 10);
+        }}
+      >
+        Laad meer
+      </Button>
     </div>
   );
 };

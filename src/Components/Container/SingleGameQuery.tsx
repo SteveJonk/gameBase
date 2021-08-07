@@ -6,6 +6,7 @@ import LoadingAnimation from '../Presentational/LoadingAnimation';
 import SingleGame from './../Presentational/SingleGame';
 
 import { iSingleGameSteam } from './../../Interfaces/iSingleGameSteam';
+import { Endpoint } from './../../Config/ApiConfig';
 
 export interface iSingleGameQuery {
   steamID: string;
@@ -17,7 +18,7 @@ const SingleGameQuery: React.FC<iSingleGameQuery> = (props) => {
   const [singleGameSteam, setSingleGameSteam] = useState<iSingleGameSteam | null>(null);
 
   const { isLoading, error, data, status } = useQuery('SingleGameSteam', () =>
-    fetch('/api/appdetails?appids=' + steamID).then((res) => res.json())
+    fetch(Endpoint.url + steamID).then((res) => res.json())
   );
 
   useEffect(() => {

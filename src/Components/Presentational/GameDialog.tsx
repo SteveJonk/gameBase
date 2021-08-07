@@ -79,7 +79,7 @@ const GameDialog: React.FC<iErrorMessageProps> = (props) => {
             <React.Fragment>
               <ErrorMessage />
               <Typography variant='h5' align='center'>
-                Er is geen steam id ingevuld voor deze game
+                Er is geen steam id ingevuld voor deze game.
               </Typography>
             </React.Fragment>
           )}
